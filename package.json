@@ -1,0 +1,20 @@
+{
+  "name": "helm-node-nginx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:app": "node ./app/server.js",
+    "start:userservice": "node ./userservice/server.js",
+    "start:all": "npm run start:app & npm run start:userservice"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "node-fetch": "^2.6.1"
+  }
+}
