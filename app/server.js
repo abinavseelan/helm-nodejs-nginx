@@ -17,7 +17,13 @@ app.get('/ping', (req, res) => {
 });
 
 app.get('/api/users', async (req, res) => {
-  const response = await fetch('http://localhost:4000/v1/users');
+  let response;
+  if (process.env.NODE_ENV === 'production') {
+    response = await fetch('http://user-service-clusterip-service/v1/users');
+  } else {
+    response = await fetch("http://localhost:4000/v1/users");
+  }
+
   const data = await response.json();
 
   return res.json({
