@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.userservice.name }}-deployment
+spec:
+  replicas: {{ .Values.userservice.replicas }}
+  selector:
+    matchLabels:
+      server: {{ .Values.userservice.name }}
+  template:
+    metadata:
+      labels:
+        server: {{ .Values.userservice.name }}
+    spec:
+      containers:
+        - name: {{ .Values.userservice.name }}
+          image: {{ .Values.userservice.image.name}}:{{ .Values.userservice.image.tag }}
+          imagePullPolicy: Never
+          ports:
+            - containerPort: {{ .Values.userservice.image.port }}
+          env:
+            - name: NODE_ENV
+              value: production

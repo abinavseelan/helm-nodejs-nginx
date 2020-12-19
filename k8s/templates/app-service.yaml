@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.appserver.service.name }}
+spec:
+  type: {{ .Values.appserver.service.type }}
+  ports:
+    - port: 80
+      targetPort: {{ .Values.appserver.image.port }}
+  selector:
+    server: {{ .Values.appserver.name }}

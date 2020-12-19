@@ -14,6 +14,8 @@ app.get('/v1/users', (req, res) => {
     name: 'John Doe'
   }, {
     name: 'Jane Doe'
+  }, {
+    name: 'Jordan Doe'
   }];
 
   res.json(users);
